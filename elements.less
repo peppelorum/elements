@@ -5,6 +5,27 @@
     More info at: http://lesselements.com
   ---------------------------------------------------*/
 
+.rgba-gradient(@color: #FFF, @start: #FFF, @stop: #000, @opacity: 1) {
+    @alphaStartColour: hsla(hue(@start), saturation(@start), lightness(@start), @opacity);
+    @alphaStopColour: hsla(hue(@stop), saturation(@stop), lightness(@stop), @opacity);
+    @ieAlphaStartColour: argb(@alphaStartColour);
+    @ieAlphaStopColour: argb(@alphaStopColour);
+
+//    background: @color;
+    background: -webkit-gradient(linear,
+                                left bottom,
+                                left top,
+                                color-stop(0, @alphaStartColour),
+                                color-stop(1, @alphaStopColour));
+
+    zoom: 1; // hasLayout
+    background-color: transparent\9;
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=@{ieAlphaStartColour}, endColorstr=@{ieAlphaStopColour})"; // IE 8+
+    filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr=@{ieAlphaStartColour}, endColorstr=@{ieAlphaStopColour})"; // IE 6 & 7
+
+    background-color: @alphaStartColour;
+}
+
 .gradient(@color: #F5F5F5, @start: #EEE, @stop: #FFF) {
   background: @color;
   background: -webkit-gradient(linear,

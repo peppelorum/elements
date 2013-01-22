@@ -18,6 +18,21 @@
                                 color-stop(0, @alphaStartColour),
                                 color-stop(1, @alphaStopColour));
 
+    background: -moz-linear-gradient(
+            center bottom,
+            @alphaStartColour 0%,
+            @alphaStopColour 100%
+    );
+    background: -o-linear-gradient(
+            @alphaStartColour,
+            @alphaStopColour
+    );
+    background: -ms-linear-gradient(
+            bottom
+            @alphaStartColour,
+            @alphaStopColour
+    );
+
     zoom: 1; // hasLayout
     background-color: transparent\9;
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=@{ieAlphaStartColour}, endColorstr=@{ieAlphaStopColour})"; // IE 8+
